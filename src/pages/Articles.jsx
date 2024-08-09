@@ -22,7 +22,7 @@ const ArticleContainer = styled.div`
   flex-wrap: nowrap;
   gap: 16px;
   overflow-x: auto;
-  padding: 20px;
+  padding: 20px 0; // Adjusted padding
   scroll-behavior: smooth;
   position: relative;
   &::-webkit-scrollbar {
@@ -56,23 +56,23 @@ const ScrollButton = styled.button`
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(0,0,0,0.5);
+  background: rgba(0, 0, 0, 0.5);
   color: white;
   border: none;
   padding: 10px;
   cursor: pointer;
-  z-index: 1;
+  z-index: 10; // Ensure the button is on top of other elements
   &:hover {
-    background: rgba(0,0,0,0.7);
+    background: rgba(0, 0, 0, 0.7);
   }
 `;
 
 const ScrollLeftButton = styled(ScrollButton)`
-  left: 0;
+  left: 30px; // Ensure the button is outside of the content area
 `;
 
 const ScrollRightButton = styled(ScrollButton)`
-  right: 0;
+  right: 10px; // Ensure the button is outside of the content area
 `;
 
 const Articles = () => {
@@ -80,15 +80,15 @@ const Articles = () => {
 
   const scrollLeft = () => {
     containerRef.current.scrollBy({
-      left: -300, // adjust scroll distance here
-      behavior: 'smooth'
+      left: -300, // Adjust scroll distance here
+      behavior: 'smooth',
     });
   };
 
   const scrollRight = () => {
     containerRef.current.scrollBy({
-      left: 300, // adjust scroll distance here
-      behavior: 'smooth'
+      left: 300, // Adjust scroll distance here
+      behavior: 'smooth',
     });
   };
 
@@ -120,6 +120,15 @@ const Articles = () => {
             ))}
           </ArticleContainer>
           <ScrollRightButton onClick={scrollRight}>{'>'}</ScrollRightButton>
+        </Grid>
+
+        {/* Add Horizontal Image Here */}
+        <Grid item xs={12} style={{ textAlign: 'center', marginTop: '20px' }}>
+          <img
+            src="src/assets/images/Frame 1244830895.png" // Replace with your image path
+            alt="Horizontal"
+            style={{ maxWidth: '100%', height: 'auto' }}
+          />
         </Grid>
       </Grid>
     </div>

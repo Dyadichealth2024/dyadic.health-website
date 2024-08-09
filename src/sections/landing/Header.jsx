@@ -116,80 +116,27 @@ export default function HeaderPage() {
                     delay: 0.4
                   }}
                 >
-                  <Grid container spacing={2} justifyContent="center">
+                  <Grid container spacing={3} justifyContent="center">
                     <Grid item>
                       <AnimateButton>
                         <Button component={RouterLink} to="/components-overview/buttons" size="large" color="secondary" variant="outlined">
-                          Explore Components
+                          I am well known about DH
                         </Button>
                       </AnimateButton>
                     </Grid>
                     <Grid item>
                       <AnimateButton>
                         <Button component={RouterLink} to="/login" target="_blank" size="large" color="primary" variant="contained">
-                          Live Preview
+                          I am not sure about DH
                         </Button>
                       </AnimateButton>
                     </Grid>
-                  </Grid>
-                </motion.div>
-              </Grid>
-              <Grid item xs={12}>
-                <motion.div
-                  initial={{ opacity: 0, translateY: 550 }}
-                  animate={{ opacity: 1, translateY: 0 }}
-                  transition={{
-                    type: 'spring',
-                    stiffness: 150,
-                    damping: 30,
-                    delay: 0.6
-                  }}
-                >
-                  <Grid container spacing={3} justifyContent="center">
-                    <Grid
-                      item
-                      sx={{
-                        position: 'relative',
-                        '&:after': {
-                          content: '""',
-                          position: 'absolute',
-                          height: 30,
-                          bottom: 10,
-                          left: 'auto',
-                          right: '-12px',
-                          width: '1px',
-                          background: theme.palette.divider
-                        }
-                      }}
-                    >
-                      {/* <Rating name="read-only" value={4.5} size="small" readOnly />
-                      <Typography variant="h4">
-                        4.7/5
-                        <span
-                          style={{
-                            fontSize: '75%',
-                            fontWeight: 400,
-                            margin: 5,
-                            color: theme.palette.text.secondary
-                          }}
-                        >
-                          Ratings
-                        </span>
-                      </Typography>
-                    </Grid>
                     <Grid item>
-                      <Typography variant="h5">
-                        <span
-                          style={{
-                            fontSize: '75%',
-                            fontWeight: 400,
-                            color: theme.palette.text.secondary
-                          }}
-                        >
-                          Sales
-                        </span>
-                      </Typography>
-                      <Typography variant="h4">2.5K+</Typography> */}
+                      <AnimateButton>
+                        <Button component={RouterLink} to="/components-overview/buttons" size="large" color="secondary" variant="outlined">
+                          I dontknow anything about DH
+                        </Button>
+                      </AnimateButton>
                     </Grid>
                   </Grid>
                 </motion.div>
@@ -197,229 +144,6 @@ export default function HeaderPage() {
             </Grid>
           </Grid>
         </Grid>
-        <Box
-          sx={{
-            display: 'flex',
-            position: 'absolute',
-            bottom: 0,
-            left: 0,
-            right: 0,
-            alignItems: 'center',
-            justifyContent: 'center',
-            bgcolor: 'background.paper',
-            borderTop: `1px solid ${theme.palette.divider}`,
-            borderBottom: `1px solid ${theme.palette.divider}`
-          }}
-        >
-          <Grid
-            container
-            spacing={0}
-            justifyContent="center"
-            sx={{
-              '& > .MuiGrid-item': {
-                borderRight: `1px solid ${theme.palette.divider}`,
-                '&:first-of-type': { borderLeft: `1px solid ${theme.palette.divider}` },
-                '& img': { padding: 1.3 }
-              }
-            }}
-          >
-            {/* <Grid item>
-              <motion.div
-                initial={{ opacity: 0, translateY: 550 }}
-                animate={{ opacity: 1, translateY: 0 }}
-                transition={{ type: 'spring', stiffness: 150, damping: 30, delay: 0.8 }}
-              >
-                <Tooltip title="Click to Preview Bootstrap 5">
-                  <Link
-                    component={Link}
-                    href={ispValue !== null && parseInt(ispValue) === 1 ? 'https://ableproadmin.com?isp=1' : 'https://ableproadmin.com'}
-                    target="_blank"
-                  >
-                    <CardMedia component="img" image={techBootstrap} sx={{ width: 'auto' }} />
-                  </Link>
-                </Tooltip>
-              </motion.div>
-            </Grid> */}
-            {/* <Grid item>
-              <motion.div
-                initial={{ opacity: 0, translateY: 550 }}
-                animate={{ opacity: 1, translateY: 0 }}
-                transition={{
-                  type: 'spring',
-                  stiffness: 150,
-                  damping: 30,
-                  delay: 0.9
-                }}
-              >
-                <Tooltip title="Click to Preview React">
-                  <Link
-                    component={Link}
-                    href={
-                      ispValue !== null && parseInt(ispValue) === 1
-                        ? 'https://ableproadmin.com/react/?isp=1'
-                        : 'https://ableproadmin.com/react/'
-                    }
-                    target="_blank"
-                  >
-                    <CardMedia component="img" image={techReact} sx={{ width: 'auto' }} />
-                  </Link>
-                </Tooltip>
-              </motion.div>
-            </Grid> */}
-            {/* <Grid item>
-              <motion.div
-                initial={{ opacity: 0, translateY: 550 }}
-                animate={{ opacity: 1, translateY: 0 }}
-                transition={{
-                  type: 'spring',
-                  stiffness: 150,
-                  damping: 30,
-                  delay: 1
-                }}
-              >
-                <Tooltip title="Click to Preview Angular">
-                  <Link
-                    component={Link}
-                    href={
-                      ispValue !== null && parseInt(ispValue) === 1
-                        ? 'https://ableproadmin.com/angular/default/?isp=1'
-                        : 'https://ableproadmin.com/angular/default/'
-                    }
-                    target="_blank"
-                  >
-                    <CardMedia component="img" image={techAngular} sx={{ width: 'auto' }} />
-                  </Link>
-                </Tooltip>
-              </motion.div>
-            </Grid> */}
-            {/* <Grid item>
-              <motion.div
-                initial={{ opacity: 0, translateY: 550 }}
-                animate={{ opacity: 1, translateY: 0 }}
-                transition={{
-                  type: 'spring',
-                  stiffness: 150,
-                  damping: 30,
-                  delay: 1.1
-                }}
-              >
-                <Tooltip title="Click to Preview CodeIgniter">
-                  <Link
-                    component={Link}
-                    href={
-                      ispValue !== null && parseInt(ispValue) === 1
-                        ? 'https://ableproadmin.com/codeigniter/default/public/?isp=1'
-                        : 'https://ableproadmin.com/codeigniter/default/public/ '
-                    }
-                    target="_blank"
-                  >
-                    <CardMedia component="img" image={techCodeigniter} sx={{ width: 'auto' }} />
-                  </Link>
-                </Tooltip>
-              </motion.div>
-            </Grid> */}
-            {/* <Grid item>
-              <motion.div
-                initial={{ opacity: 0, translateY: 550 }}
-                animate={{ opacity: 1, translateY: 0 }}
-                transition={{
-                  type: 'spring',
-                  stiffness: 150,
-                  damping: 30,
-                  delay: 1.2
-                }}
-              >
-                <Tooltip title="Click to Preview ASP.net">
-                  <Link
-                    component={Link}
-                    href={
-                      ispValue !== null && parseInt(ispValue) === 1
-                        ? 'https://able-pro.azurewebsites.net/?isp=1'
-                        : 'https://able-pro.azurewebsites.net/'
-                    }
-                    target="_blank"
-                  >
-                    <CardMedia component="img" image={techNet} sx={{ width: 'auto' }} />
-                  </Link>
-                </Tooltip>
-              </motion.div>
-            </Grid> */}
-            {/* <Grid item>
-              <motion.div
-                initial={{ opacity: 0, translateY: 550 }}
-                animate={{ opacity: 1, translateY: 0 }}
-                transition={{
-                  type: 'spring',
-                  stiffness: 150,
-                  damping: 30,
-                  delay: 1.3
-                }}
-              >
-                <Tooltip title="Click to Preview Vue">
-                  <Link
-                    component={Link}
-                    href={
-                      ispValue !== null && parseInt(ispValue) === 1
-                        ? 'https://ableproadmin.com/vue/?isp=1'
-                        : 'https://ableproadmin.com/vue/'
-                    }
-                    target="_blank"
-                  >
-                    <CardMedia component="img" image={techVue} sx={{ width: 'auto' }} />
-                  </Link>
-                </Tooltip>
-              </motion.div>
-            </Grid> */}
-            {/* <Grid item>
-              <motion.div
-                initial={{ opacity: 0, translateY: 550 }}
-                animate={{ opacity: 1, translateY: 0 }}
-                transition={{
-                  type: 'spring',
-                  stiffness: 150,
-                  damping: 30,
-                  delay: 1.3
-                }}
-              >
-                <Tooltip title="Click to Preview Next Js">
-                  <Link
-                    component={Link}
-                    href={
-                      ispValue !== null && parseInt(ispValue) === 1
-                        ? 'https://able-pro-material-next-ts-navy.vercel.app/?isp=1'
-                        : 'https://able-pro-material-next-ts-navy.vercel.app/'
-                    }
-                    target="_blank"
-                  >
-                    <CardMedia component="img" image={techNextJS} sx={{ width: 'auto' }} />
-                  </Link>
-                </Tooltip>
-              </motion.div>
-            </Grid> */}
-            {/* <Grid item>
-              <motion.div
-                initial={{ opacity: 0, translateY: 550 }}
-                animate={{ opacity: 1, translateY: 0 }}
-                transition={{
-                  type: 'spring',
-                  stiffness: 150,
-                  damping: 30,
-                  delay: 1.3
-                }}
-              >
-                <Tooltip title="Figma Design System">
-                  <Link
-                    component={Link}
-                    href="https://www.figma.com/file/6XqmRhRmkr33w0EFD49acY/Able-Pro--v9.0-Figma-Preview?type=design&mode=design&t=4FS2Lw6WxsmJ3RLm-0"
-                    target="_blank"
-                  >
-                    <CardMedia component="img" image={techFigma} sx={{ width: 'auto' }} />
-                  </Link>
-                </Tooltip>
-              </motion.div>
-            </Grid> */}
-          </Grid>
-        </Box>
       </Container>
     </Box>
   );
