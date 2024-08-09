@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import Grid from '@mui/material/Grid';
 import AuthBackground from 'assets/images/auth/AuthBackground';
@@ -19,19 +19,14 @@ const articles = [
 
 const ArticleContainer = styled.div`
   display: flex;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   gap: 16px;
-  overflow-x: auto;
+  justify-content: center;
   padding: 20px;
-  scroll-behavior: smooth;
-  position: relative;
-  &::-webkit-scrollbar {
-    display: none;
-  }
 `;
 
 const ArticleCard = styled.div`
-  min-width: 300px;
+  width: 300px;
   background: ${props => props.bgColor || '#fff'};
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0,0,0,0.1);
@@ -52,46 +47,7 @@ const ArticleTitle = styled.div`
   font-weight: 500;
 `;
 
-const ScrollButton = styled.button`
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(0,0,0,0.5);
-  color: white;
-  border: none;
-  padding: 10px;
-  cursor: pointer;
-  z-index: 1;
-  &:hover {
-    background: rgba(0,0,0,0.7);
-  }
-`;
-
-const ScrollLeftButton = styled(ScrollButton)`
-  left: 0;
-`;
-
-const ScrollRightButton = styled(ScrollButton)`
-  right: 0;
-`;
-
 const Articles = () => {
-  const containerRef = useRef(null);
-
-  const scrollLeft = () => {
-    containerRef.current.scrollBy({
-      left: -300, // adjust scroll distance here
-      behavior: 'smooth'
-    });
-  };
-
-  const scrollRight = () => {
-    containerRef.current.scrollBy({
-      left: 300, // adjust scroll distance here
-      behavior: 'smooth'
-    });
-  };
-
   return (
     <div>
       <Grid container spacing={4} justifyContent="center" alignItems="center" sx={{ mb: 12 }}>
@@ -109,18 +65,14 @@ const Articles = () => {
             </Container>
           </Box>
         </Grid>
-        <Grid item xs={12} style={{ position: 'relative' }}>
-          <ScrollLeftButton onClick={scrollLeft}>{'<'}</ScrollLeftButton>
-          <ArticleContainer ref={containerRef}>
-            {articles.map((article, index) => (
-              <ArticleCard key={index} bgColor={article.bgColor}>
-                <ArticleImage src={article.imgSrc} alt={article.title} />
-                <ArticleTitle>{article.title}</ArticleTitle>
-              </ArticleCard>
-            ))}
-          </ArticleContainer>
-          <ScrollRightButton onClick={scrollRight}>{'>'}</ScrollRightButton>
-        </Grid>
+        <ArticleContainer>
+          {articles.map((article, index) => (
+            <ArticleCard key={index} bgColor={article.bgColor}>
+              <ArticleImage src={article.imgSrc} alt={article.title} />
+              <ArticleTitle>{article.title}</ArticleTitle>
+            </ArticleCard>
+          ))}
+        </ArticleContainer>
       </Grid>
     </div>
   );

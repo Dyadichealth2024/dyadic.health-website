@@ -14,13 +14,13 @@ export default function Landing() {
   return (
     <>
       <Hero />
-      <Technologies />
       <Combo />
+      <Technologies />
       <Apps />
       <Free />
-      {/* <Testimonial />
+      <Testimonial />
       <Partner />
-      <ContactUs /> */}
+      <ContactUs />
     </>
   );
 }
