@@ -20,6 +20,8 @@ import Stack from '@mui/material/Stack';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import useScrollTrigger from '@mui/material/useScrollTrigger';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
 
 // project-imports
 import { APP_DEFAULT_PATH, ThemeDirection } from 'config';
@@ -54,6 +56,8 @@ export default function Header({ layout = 'landing', ...others }) {
   const theme = useTheme();
   const matchDownMd = useMediaQuery(theme.breakpoints.down('md'));
   const [drawerToggle, setDrawerToggle] = useState(false);
+  const [anchorEl, setAnchorEl] = useState(null);
+  const isMenuOpen = Boolean(anchorEl);
 
   const { menuMaster } = useGetMenuMaster();
 
@@ -63,6 +67,14 @@ export default function Header({ layout = 'landing', ...others }) {
       return;
     }
     setDrawerToggle(open);
+  };
+
+  const handleMenuOpen = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleMenuClose = () => {
+    setAnchorEl(null);
   };
 
   let url;
@@ -102,11 +114,12 @@ export default function Header({ layout = 'landing', ...others }) {
             </Stack>
             <Stack
               direction="row"
+              spacing={3} // Adjust spacing as needed
               sx={{
+                alignItems: 'center',
+                display: { xs: 'none', md: 'flex' }, // Changed 'block' to 'flex' to align items horizontally
                 '& .header-link': { fontWeight: 500, '&:hover': { color: 'primary.main' } },
-                display: { xs: 'none', md: 'block' }
               }}
-              spacing={3}
             >
               <Link
                 className="header-link"
@@ -128,17 +141,63 @@ export default function Header({ layout = 'landing', ...others }) {
               >
                 About Us
               </Link>
-              <Link
-                className="header-link"
-                color="secondary.main"
-                component={RouterLink}
-                to="/articles"
-                underline="none"
-              >
-                Articles
-              </Link>
 
-               <Link
+              {/* Articles Link with Dropdown */}
+              <Box
+                onMouseEnter={handleMenuOpen}
+                onMouseLeave={(event) => {
+                  if (!event.currentTarget.contains(event.relatedTarget)) {
+                    handleMenuClose();
+                  }
+                }}
+              >
+                <Button
+                  aria-controls={isMenuOpen ? 'articles-menu' : undefined}
+                  aria-haspopup="true"
+                  color="inherit"
+                  className="header-link"
+                  sx={{ color: theme.palette.secondary.main, textTransform: 'none' }}
+                >
+                  Articles
+                </Button>
+                <Menu
+                  id="articles-menu"
+                  anchorEl={anchorEl}
+                  open={isMenuOpen}
+                  onClose={handleMenuClose}
+                  sx={{ mt: 1 }}  // Adjusting the position of the menu
+                  anchorOrigin={{
+                    vertical: 'bottom',
+                    horizontal: 'left',
+                  }}
+                  transformOrigin={{
+                    vertical: 'top',
+                    horizontal: 'left',
+                  }}
+                  MenuListProps={{
+                    onMouseLeave: (event) => {
+                      if (!event.currentTarget.contains(event.relatedTarget)) {
+                        handleMenuClose();
+                      }
+                    },
+                  }}
+                >
+                  <MenuItem onClick={handleMenuClose} component={RouterLink} to="/resources">
+                    Resources
+                  </MenuItem>
+                  <MenuItem onClick={handleMenuClose} component={RouterLink} to="/training">
+                    Training
+                  </MenuItem>
+                  <MenuItem onClick={handleMenuClose} component={RouterLink} to="/practice">
+                    Practice
+                  </MenuItem>
+                  <MenuItem onClick={handleMenuClose} component={RouterLink} to="/video">
+                    Video
+                  </MenuItem>
+                </Menu>
+              </Box>
+
+              <Link
                 className="header-link"
                 color="secondary.main"
                 component={RouterLink}
@@ -147,36 +206,6 @@ export default function Header({ layout = 'landing', ...others }) {
               >
                 Contact Us
               </Link>       
-              {/* <Link href="https://github.com/phoenixcoded/able-pro-free-admin-dashboard-template" target="_blank" underline="none">
-                <IconButton
-                  size="large"
-                  shape="rounded"
-                  color="secondary"
-                  sx={{
-                    bgcolor: 'secondary.light',
-                    color: 'secondary.darker',
-                    '&:hover': { color: 'secondary.lighter', bgcolor: 'secondary.darker' }
-                  }}
-                >
-                  <DocumentDownload />
-                </IconButton>
-              </Link> */}
-              {/* <Box sx={{ display: 'inline-block' }}>
-                <AnimateButton>
-                  <Button
-                    component={Link}
-                    href={url}
-                    target="_blank"
-                    disableElevation
-                    startIcon={<ExportSquare />}
-                    color="success"
-                    size="large"
-                    variant="contained"
-                  >
-                    Purchase Now
-                  </Button>
-                </AnimateButton>
-              </Box> */}
             </Stack>
             <Box
               sx={{
