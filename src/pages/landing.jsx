@@ -14,9 +14,15 @@ export default function Landing() {
   return (
     <>
       <Hero />
-      <Combo />
-      <Technologies />
-      <Apps />
+      <section id="combo">
+        <Combo />
+      </section>
+      <section id="technologies">
+        <Technologies />
+      </section>
+      <section id="apps">
+        <Apps />
+      </section>
       <Free />
       {/* <Testimonial />
       <Partner />
