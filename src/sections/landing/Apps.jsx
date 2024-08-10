@@ -91,24 +91,24 @@ const QUESTIONS = {
 
 const Technologies = [
   {
-    title: 'Parenting',
+    title: 'Dyadic Health',
     category: 'parenting',
-    description: 'A parent-child relationship is the most comprehensive dyadic relationship where many elements of a relationship are implied. With guidance, security, and love as underlying attributes, the relationship can take positive directions.'
+    description: 'Dyadic Health being the healh of those in dyadic relationship - a relationship of a dyad(pair) - Engage in activities that are fundamental to any dyadic relationship and make yourself robust for any dyadic relationship.'
   },
   {
-    title: 'Spousal Relationships',
+    title: 'Spousal Dyad',
     category: 'spousal_relationships',
-    description: 'Spousal relationships, though inherently intimate, encompass much more. The strength of the spousal connection directly influences each partner\'s health, underscoring the importance of fostering unity, empathy, and shared values within the home.'
+    description: 'Activities focussing on - each partner\'s health, underscoring the importance of fostering unity, empathy, and shared values within the home while maintaining the intimacy spark.'
   },
   {
-    title: 'Family',
+    title: 'Parental Dyad',
     category: 'family',
-    description: 'Family relationship is a culmination of Spousal and Parental relationships.'
+    description: 'Activities focussing on - being a balanced parent, providing guidance, security, and love as underlying attributes to the child.'
   },
   {
-    title: 'Quality Relationships',
+    title: 'Other Common Dyads',
     category: 'quality_relationships',
-    description: 'Nurturing and preserving the quality of relationships has tremendous health benefits.'
+    description: 'Activities focussing on -  personal boundaries and preferences, encouraging personal growth and development, collaborating, and addressing conflicts constructively - with various other dyadic relationships we encounter day to day.'
   }
 ];
 

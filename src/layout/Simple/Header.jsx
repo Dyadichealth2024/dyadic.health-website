@@ -163,7 +163,7 @@ export default function Header({ layout = 'landing', ...others }) {
                     fontWeight: 'bold', // Adjust the weight as needed (e.g., 'bold', 500)
                   }}
                 >
-                  Our Offerings
+                  Offerings
                 </Button>
                 <Menu
                   id="articles-menu"
@@ -187,17 +187,17 @@ export default function Header({ layout = 'landing', ...others }) {
                     },
                   }}
                 >
-                  <MenuItem onClick={handleMenuClose} component={RouterLink} to="/resources" sx={menuItemStyles}>
+                  <MenuItem onClick={handleMenuClose} component={RouterLink} to="/Articles" sx={menuItemStyles}>
+                    Articlels
+                  </MenuItem>
+                  <MenuItem onClick={handleMenuClose} component={RouterLink} to="/Resources" sx={menuItemStyles}>
                     Resources
                   </MenuItem>
-                  <MenuItem onClick={handleMenuClose} component={RouterLink} to="/training" sx={menuItemStyles}>
+                  <MenuItem onClick={handleMenuClose} component={RouterLink} to="/Foundation" sx={menuItemStyles}>
+                    Foundation
+                  </MenuItem>
+                  <MenuItem onClick={handleMenuClose} component={RouterLink} to="/Traning" sx={menuItemStyles}>
                     Training
-                  </MenuItem>
-                  <MenuItem onClick={handleMenuClose} component={RouterLink} to="/practice" sx={menuItemStyles}>
-                    Practice
-                  </MenuItem>
-                  <MenuItem onClick={handleMenuClose} component={RouterLink} to="/video" sx={menuItemStyles}>
-                    Video
                   </MenuItem>
                 </Menu>
               </Box>

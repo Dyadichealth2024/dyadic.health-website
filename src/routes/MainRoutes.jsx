@@ -133,7 +133,10 @@ const ContactUS = Loadable(lazy(() => import('pages/contact-us')));
 const PricingPage = Loadable(lazy(() => import('pages/extra-pages/price/price1')));
 const PricingPage2 = Loadable(lazy(() => import('pages/extra-pages/price/price2')));
 const AboutUs = Loadable(lazy(() => import('pages/AboutUs')));
-const Articles = Loadable(lazy(() => import('pages/Articles'))); // Add this line
+const Articles = Loadable(lazy(() => import('pages/offerings/Articles'))); // Add this line
+const Resources = Loadable(lazy(() => import('pages/offerings/Resources')));
+const Foundation = Loadable(lazy(() => import('pages/offerings/Foundation')));
+const Traning = Loadable(lazy(() => import('pages/offerings/Traning')));
 
 // ==============================|| MAIN ROUTES ||============================== //
 
@@ -554,7 +557,19 @@ const MainRoutes = {
         {
           path: 'articles', // Add this line
           element: <Articles /> // Add this line
-        }
+        },
+        {
+          path: 'resources', // Add this line
+          element: <Resources /> // Add this line
+        },
+        {
+          path: 'foundation', // Add this line
+          element: <Foundation /> // Add this line
+        },
+        {
+          path: 'traning', // Add this line
+          element: <Traning /> // Add this line
+        },
       ]
     },
     {
