@@ -35,7 +35,7 @@ export default function HeaderPage() {
   };
 
   return (
-    <Box sx={{ minHeight: '70vh', position: 'relative', pb: 6, pt: 6, display: 'flex', alignItems: 'center' }}>
+    <Box sx={{ minHeight: '70vh', position: 'relative', pb: 6, pt: 6, display: 'flex', alignItems: 'center' , backgroundColor: '#ECEDF3'}}>
       <Container>
         <Grid container alignItems="center" justifyContent="center" spacing={2} sx={{ pt: { md: 0, xs: 5 }, pb: { md: 0, xs: 10 } }}>
           <Grid item xs={12} md={9}>
@@ -58,7 +58,7 @@ export default function HeaderPage() {
                       lineHeight: 1.2
                     }}
                   >
-                    Explore Our Programs and Improve your{' '}
+                    Explore Our Offerings and Improve your{' '}
                     <Typography
                       variant="h1"
                       component="span"
@@ -72,9 +72,18 @@ export default function HeaderPage() {
                         '@keyframes move-bg': { '100%': { backgroundPosition: '400% 0' } }
                       }}
                     >
-                         "Dyadic Health"
-                    </Typography>{' '}
-                    
+                      "Dyadic Health
+                      <Typography
+                        component="sup" // This will make the star superscript
+                        sx={{
+                          fontSize: '0.5em', // Adjust the size relative to the parent font size
+                          verticalAlign: 'super', // Align it as a superscript
+                          color: 'inherit', // Ensure it inherits the color from the parent
+                        }}
+                      >
+                        *"
+                      </Typography>
+                    </Typography>
                   </Typography>
                 </motion.div>
               </Grid>
@@ -98,8 +107,17 @@ export default function HeaderPage() {
                         lineHeight: { xs: 1.4, md: 1.4 }
                       }}
                     >
-                      Able Pro is one of the featured admin dashboard templates in Envato Marketplace and used by over 2.5K+ customers
-                      worldwide.
+                      <Typography
+                        component="sup" // This will make the star superscript
+                        sx={{
+                          fontSize: '0.7em', // Adjust the size relative to the parent font size
+                          verticalAlign: 'super', // Align it as a superscript
+                          color: 'inherit', // Ensure it inherits the color from the parent
+                        }}
+                      >
+                        *
+                      </Typography>
+                      Dyadic Health is the health of the relationship of two people in the Dyad (pair)
                     </Typography>
                   </motion.div>
                 </Grid>
@@ -121,9 +139,9 @@ export default function HeaderPage() {
                       name="knowledge-level"
                       onChange={handleRadioChange}
                     >
-                      <FormControlLabel value="apps" control={<Radio />} label="I am well known about DH" />
-                      <FormControlLabel value="technologies" control={<Radio />} label="I am not sure about DH" />
                       <FormControlLabel value="combo" control={<Radio />} label="I don't know anything about DH" />
+                      <FormControlLabel value="apps" control={<Radio />} label="I understand relationship between 2 but like to learn more" />
+                      <FormControlLabel value="technologies" control={<Radio />} label="I know what DH is and like to improve more" />
                     </RadioGroup>
                   </FormControl>
                 </motion.div>

@@ -97,7 +97,7 @@ export default function ComboPage() {
   const shouldShowThumbnail = videosPlayed.length >= 2 && !videosPlayed.includes(selectedVideo);
 
   return (
-    <Box sx={{ backgroundColor: '#ECEDF3', minHeight: '70vh', padding: 3 }}>
+    <Box sx={{ backgroundColor: '#ffffff', minHeight: '70vh', padding: 3 }}>
       <Container>
         <Box sx={{ marginBottom: 5, marginTop: 2 }}>
           <Typography variant="h4" align="center" gutterBottom>

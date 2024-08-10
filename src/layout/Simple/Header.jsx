@@ -26,7 +26,6 @@ import MenuItem from '@mui/material/MenuItem';
 // project-imports
 import { APP_DEFAULT_PATH, ThemeDirection } from 'config';
 import IconButton from 'components/@extended/IconButton';
-import AnimateButton from 'components/@extended/AnimateButton';
 import Logo from 'components/logo';
 import { handlerComponentDrawer, useGetMenuMaster } from 'api/menu';
 
@@ -61,6 +60,12 @@ export default function Header({ layout = 'landing', ...others }) {
 
   const { menuMaster } = useGetMenuMaster();
 
+  const menuItemStyles = {
+    fontFamily: 'timesnewroman', // Example: 'Arial, sans-serif'
+    fontSize: '16', // Adjust the size as needed
+    fontWeight: '600', // Adjust the weight as needed (e.g., 'normal', 400)
+  };
+
   /** Method called on multiple components with different event types */
   const drawerToggler = (open) => (event) => {
     if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
@@ -82,17 +87,11 @@ export default function Header({ layout = 'landing', ...others }) {
   const params = new URLSearchParams(value);
   const ispValue = params.get('isp');
 
-  if (ispValue !== null && parseInt(ispValue) === 1) {
-    url = 'https://1.envato.market/OrJ5nn';
-  } else {
-    url = 'https://1.envato.market/zNkqj6';
-  }
-
   return (
     <ElevationScroll layout={layout} {...others}>
       <AppBar
         sx={{
-          bgcolor: alpha(theme.palette.background.default, 0.1),
+          bgcolor: alpha(theme.palette.background.default, 2.9),
           backdropFilter: 'blur(8px)',
           color: theme.palette.text.primary,
           boxShadow: 'none'
@@ -118,7 +117,7 @@ export default function Header({ layout = 'landing', ...others }) {
               sx={{
                 alignItems: 'center',
                 display: { xs: 'none', md: 'flex' }, // Changed 'block' to 'flex' to align items horizontally
-                '& .header-link': { fontWeight: 500, '&:hover': { color: 'primary.main' } },
+                '& .header-link': { fontWeight: 700, '&:hover': { color: 'lightblue' }, color: 'blue', fontSize: 18, fontFamily: 'timesnewroman' },
               }}
             >
               <Link
@@ -156,9 +155,15 @@ export default function Header({ layout = 'landing', ...others }) {
                   aria-haspopup="true"
                   color="inherit"
                   className="header-link"
-                  sx={{ color: theme.palette.secondary.main, textTransform: 'none' }}
+                  sx={{ 
+                    color: theme.palette.secondary.main, 
+                    textTransform: 'none',
+                    fontFamily: 'timesnewroman', // Example: 'Arial, sans-serif'
+                    fontSize: '18', // Adjust the size as needed
+                    fontWeight: 'bold', // Adjust the weight as needed (e.g., 'bold', 500)
+                  }}
                 >
-                  Articles
+                  Our Offerings
                 </Button>
                 <Menu
                   id="articles-menu"
@@ -182,16 +187,16 @@ export default function Header({ layout = 'landing', ...others }) {
                     },
                   }}
                 >
-                  <MenuItem onClick={handleMenuClose} component={RouterLink} to="/resources">
+                  <MenuItem onClick={handleMenuClose} component={RouterLink} to="/resources" sx={menuItemStyles}>
                     Resources
                   </MenuItem>
-                  <MenuItem onClick={handleMenuClose} component={RouterLink} to="/training">
+                  <MenuItem onClick={handleMenuClose} component={RouterLink} to="/training" sx={menuItemStyles}>
                     Training
                   </MenuItem>
-                  <MenuItem onClick={handleMenuClose} component={RouterLink} to="/practice">
+                  <MenuItem onClick={handleMenuClose} component={RouterLink} to="/practice" sx={menuItemStyles}>
                     Practice
                   </MenuItem>
-                  <MenuItem onClick={handleMenuClose} component={RouterLink} to="/video">
+                  <MenuItem onClick={handleMenuClose} component={RouterLink} to="/video" sx={menuItemStyles}>
                     Video
                   </MenuItem>
                 </Menu>
