@@ -6,6 +6,7 @@ import Container from '@mui/material/Container';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import MainCard from 'components/MainCard';
+import { useNavigate } from 'react-router-dom';
 import videoList from './videoList';
 
 export default function ComboPage() {
@@ -15,40 +16,34 @@ export default function ComboPage() {
   const [shouldAutoplay, setShouldAutoplay] = useState(false);
   const [initialVideoPlayed, setInitialVideoPlayed] = useState(false);
 
+  const navigate = useNavigate();
+
   const handleVideoSelect = (videoId) => {
     const totalVideosAllowed = 2;
     const isInitialVideo = videoId === initialVideoId;
 
-    // Count the initial video as played only when interacted with
     if (isInitialVideo && !initialVideoPlayed) {
       setInitialVideoPlayed(true);
       if (videosPlayed.length < totalVideosAllowed) {
         setVideosPlayed((prevPlayed) => [...prevPlayed, videoId]);
       }
       setShouldAutoplay(true);
-    } 
-    // For other videos
-    else if (!isInitialVideo && !videosPlayed.includes(videoId) && videosPlayed.length < totalVideosAllowed) {
+    } else if (!isInitialVideo && !videosPlayed.includes(videoId) && videosPlayed.length < totalVideosAllowed) {
       setVideosPlayed((prevPlayed) => [...prevPlayed, videoId]);
       setShouldAutoplay(true);
     } else {
-      setShouldAutoplay(false); // Prevent autoplay if the video limit is reached
+      setShouldAutoplay(false);
+    }
+
+    if (videosPlayed.length >= totalVideosAllowed) {
+      navigate('/video-gallery', { state: { videoList, videosPlayed } });
     }
 
     setSelectedVideo(videoId);
   };
 
-  const handleInitialVideoPlay = () => {
-    if (!initialVideoPlayed) {
-      setInitialVideoPlayed(true);
-      if (videosPlayed.length < 2) {
-        setVideosPlayed((prevPlayed) => [...prevPlayed, initialVideoId]);
-      }
-    }
-  };
-
   const containerStyle = {
-    height: '10cm', // Adjust height as needed
+    height: '10cm',
     overflowY: 'auto',
   };
 
@@ -60,7 +55,7 @@ export default function ComboPage() {
     position: 'relative',
     width: '100%',
     height: '0',
-    paddingBottom: '56.25%', // 16:9 aspect ratio
+    paddingBottom: '56.25%',
   };
 
   const iframeStyle = {
@@ -154,7 +149,6 @@ export default function ComboPage() {
                     style={iframeStyle}
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen
-                    onPlay={selectedVideo === initialVideoId ? handleInitialVideoPlay : undefined}
                   />
                 </Box>
               )}

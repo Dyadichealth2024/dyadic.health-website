@@ -137,6 +137,9 @@ const Articles = Loadable(lazy(() => import('pages/offerings/Articles'))); // Ad
 const Resources = Loadable(lazy(() => import('pages/offerings/Resources')));
 const Foundation = Loadable(lazy(() => import('pages/offerings/Foundation')));
 const Traning = Loadable(lazy(() => import('pages/offerings/Traning')));
+const VideoGallery = Loadable(lazy(() => import('../sections/landing/VideoGallery')));
+const Combo = Loadable(lazy(() => import('../sections/landing/Combo')));
+
 
 // ==============================|| MAIN ROUTES ||============================== //
 
@@ -159,6 +162,14 @@ const MainRoutes = {
               element: <DashboardAnalytics />
             }
           ]
+        },
+        {
+          path: 'combo',
+          element: <Combo />
+        },
+        {
+          path: 'video-gallery',
+          element: <VideoGallery />
         },
         {
           path: 'widget',
