@@ -35,11 +35,20 @@ export default function ComboPage() {
       setShouldAutoplay(false);
     }
 
-    if (videosPlayed.length >= totalVideosAllowed) {
-      navigate('/video-gallery', { state: { videoList, videosPlayed } });
-    }
-
     setSelectedVideo(videoId);
+  };
+
+  const handleInitialVideoPlay = () => {
+    if (!initialVideoPlayed) {
+      setInitialVideoPlayed(true);
+      if (videosPlayed.length < 2) {
+        setVideosPlayed((prevPlayed) => [...prevPlayed, initialVideoId]);
+      }
+    }
+  };
+
+  const handleContinue = () => {
+    navigate('/video-gallery', { state: { videoList, videosPlayed } });
   };
 
   const containerStyle = {
@@ -88,8 +97,7 @@ export default function ComboPage() {
   };
 
   const selectedVideoData = videoList.find((video) => video.id === selectedVideo);
-
-  const shouldShowThumbnail = videosPlayed.length >= 2 && !videosPlayed.includes(selectedVideo);
+  const shouldShowContinueOverlay = videosPlayed.length >= 2 && !videosPlayed.includes(selectedVideo);
 
   return (
     <Box sx={{ backgroundColor: '#ffffff', minHeight: '70vh', padding: 3 }}>
@@ -130,17 +138,17 @@ export default function ComboPage() {
           </Grid>
           <Grid item xs={12} md={6}>
             <MainCard style={{ ...containerStyle, backgroundColor: '#80b3ff' }}>
-              {shouldShowThumbnail ? (
-                <a href={`https://www.youtube.com/watch?v=${selectedVideo}`} target="_blank" rel="noopener noreferrer" style={thumbnailOverlayStyle}>
+              {shouldShowContinueOverlay ? (
+                <Box onClick={handleContinue} style={thumbnailOverlayStyle}>
                   <CardMedia
                     component="img"
                     image={selectedVideoData.thumbnail}
                     sx={{ width: '100%', height: 'auto', maxHeight: '300px', objectFit: 'contain' }}
                   />
                   <Typography variant="h6" sx={overlayTextStyle}>
-                    Continue on YouTube
+                    Continue to Course
                   </Typography>
-                </a>
+                </Box>
               ) : (
                 <Box style={iframeContainerStyle}>
                   <Box
@@ -149,6 +157,7 @@ export default function ComboPage() {
                     style={iframeStyle}
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen
+                    onPlay={selectedVideo === initialVideoId ? handleInitialVideoPlay : undefined}
                   />
                 </Box>
               )}
